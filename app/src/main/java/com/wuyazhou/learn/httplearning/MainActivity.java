@@ -5,7 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.wuyazhou.learn.httplearning.ViewPager.PagerOneView;
+import com.wuyazhou.learn.httplearning.volley.PagerOneView;
 import com.wuyazhou.learn.httplearning.ViewPager.ViewPagerAdapter;
 
 import java.util.ArrayList;

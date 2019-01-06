@@ -1,4 +1,4 @@
-package com.wuyazhou.learn.httplearning.ViewPager;
+package com.wuyazhou.learn.httplearning.volley;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -23,13 +23,13 @@ public class PagerOneView extends FrameLayout {
         initView();
     }
 
-    public PagerOneView(Context context, AttributeSet attrs) {
+    public PagerOneView(Context context,AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
         initView();
     }
 
-    public PagerOneView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public PagerOneView(Context context,AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext = context;
         initView();
