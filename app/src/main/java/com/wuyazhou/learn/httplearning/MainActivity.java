@@ -5,13 +5,18 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.wuyazhou.learn.httplearning.volley.PagerOneView;
+import com.wuyazhou.learn.httplearning.ViewPager.PagerOneView;
+import com.wuyazhou.learn.httplearning.volley.PagerViewVolley;
 import com.wuyazhou.learn.httplearning.ViewPager.ViewPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String baidu = "https://www.baidu.com";
+    public static final String taobao = "http://api.k780.com:88/?app=phone.get&phone=13800138000&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json";
+    public static final String imageUrl = "https://ss.csdn.net/p?https://mmbiz.qpic.cn/mmbiz_jpg/trm5VMeFp9mJejJH2asZZT0ML63erOW3QAMSkjEMsLwByykbJwsHj7QmPbQDDUU43BJpHTXxyiaY24LXlA6zKDQ/640?wx_fmt=jpeg";
+
 
     private ViewPager mViewPager = null;
 
@@ -29,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = findViewById(R.id.view_pager);
         mViewPagerAdapter = new ViewPagerAdapter(mViews,mViewTitle, this);
         mViewPager.setAdapter(mViewPagerAdapter);
-        addViewPagerView("标题一",new PagerOneView(this));
-        addViewPagerView("标题二",new PagerOneView(this));
+        addViewPagerView("volley",new PagerViewVolley(this));
+        addViewPagerView("待使用",new PagerOneView(this));
         mViewPagerAdapter.notifyDataSetChanged();
     }
 
