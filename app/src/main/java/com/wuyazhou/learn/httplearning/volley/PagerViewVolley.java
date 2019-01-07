@@ -59,14 +59,21 @@ public class PagerViewVolley extends FrameLayout implements View.OnClickListener
         View stringRequest = mLayout.findViewById(R.id.string_request);
         stringRequest.setOnClickListener(this);
 
+        View jsonRequest = mLayout.findViewById(R.id.json_request);
+        jsonRequest.setOnClickListener(this);
+
         mResultView = mLayout.findViewById(R.id.result);
     }
 
     @Override
     public void onClick(View v) {
+        mResultView.setText("测试");
         switch (v.getId()){
             case R.id.string_request:
-                VolleyTest.useVolleyStringRequest(mContext,MainActivity.baidu,mQueue,mResultView);
+                VolleyTest.useVolleyStringRequest(MainActivity.BAIDU,mQueue,mResultView);
+                break;
+            case R.id.json_request:
+                VolleyTest.useVolleyJsonObjectRequest(MainActivity.TAOBAO,mQueue,mResultView);
                 break;
             default:
                 break;
