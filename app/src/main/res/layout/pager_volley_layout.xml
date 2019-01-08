@@ -9,18 +9,73 @@
         android:orientation="horizontal">
         <Button
             android:id="@+id/string_request"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:textAllCaps="false"
-            android:text="StringRequest" />
+            android:text="StringRequest"
+            android:textSize="10dp"/>
         <Button
             android:id="@+id/json_request"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:textAllCaps="false"
-            android:text="JsonRequest" />
+            android:text="JsonRequest"
+            android:textSize="10dp"/>
+        <Button
+            android:id="@+id/image_request"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:text="ImageRequest"
+            android:textSize="10dp"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/image_loader"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:text="ImageLoader"
+            android:textSize="10dp"/>
+        <Button
+            android:id="@+id/network_image_view_button_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:text="NetWorkImageView 1"
+            android:textSize="9dp"/>
+        <Button
+            android:id="@+id/network_image_view_button_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:text="NetWorkImageView 2"
+            android:textSize="9dp"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/saierda"
+        android:background="#cdc"/>
+
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/network_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/saierda"
+        android:background="#cdcd"/>
 
     <ScrollView
         android:layout_width="wrap_content"

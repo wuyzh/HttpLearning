@@ -17,10 +17,13 @@ import java.util.List;
  *
  * */
 public class MainActivity extends AppCompatActivity {
-    public static final String BAIDU = "https://www.baidu.com";
-    public static final String TAOBAO = "http://api.k780.com:88/?app=phone.get&phone=13800138000&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json";
-    //public static final String TAOBAO = "http://ip.taobao.com/service/getIpInfo.php?ip=59.108.54.37";
-    public static final String IMAGEURL = "https://ss.csdn.net/p?https://mmbiz.qpic.cn/mmbiz_jpg/trm5VMeFp9mJejJH2asZZT0ML63erOW3QAMSkjEMsLwByykbJwsHj7QmPbQDDUU43BJpHTXxyiaY24LXlA6zKDQ/640?wx_fmt=jpeg";
+    public static final String BAI_DU = "https://www.baidu.com";
+    public static final String TAO_BAO = "http://api.k780.com:88/?app=phone.get&phone=13800138000&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json";
+    /** public static final String TAO_BAO = "http://ip.taobao.com/service/getIpInfo.php?ip=59.108.54.37";*/
+    public static final String IMAGE_URL_1 = "https://ss.csdn.net/p?https://mmbiz.qpic.cn/mmbiz_jpg/trm5VMeFp9mJejJH2asZZT0ML63erOW3QAMSkjEMsLwByykbJwsHj7QmPbQDDUU43BJpHTXxyiaY24LXlA6zKDQ/640?wx_fmt=jpeg";
+    public static final String IMAGE_URL_2 = "http://imgup01.myra2.com/2017-04/13/11/1492055267740_0.jpg";
+    public static final String IMAGE_URL_3 = "http://i1.hexun.com/2017-10-20/191306534.jpg";
+    public static final String IMAGE_URL_4 = "http://www.pujia8.com/static/pics/20161116120001_22.jpg";
 
 
     private ViewPager mViewPager = null;

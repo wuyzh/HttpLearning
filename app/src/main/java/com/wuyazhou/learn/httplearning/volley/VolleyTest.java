@@ -1,15 +1,21 @@
 package com.wuyazhou.learn.httplearning.volley;
 
+import android.graphics.Bitmap;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
+import com.wuyazhou.learn.httplearning.R;
 
 import org.json.JSONObject;
 
@@ -36,8 +42,6 @@ public class VolleyTest {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("wuyazhouHttp",response.toString());
-
                 JsonModel jsonModel = new Gson().fromJson(response.toString(),JsonModel.class);
                 String result = "success:"+jsonModel.success+"\n"+"status:"+jsonModel.result.status+"\n"+
                         "phone:"+jsonModel.result.phone+"\n"+"area:"+jsonModel.result.area+"\n"+
@@ -59,5 +63,54 @@ public class VolleyTest {
 
         });
         queue.add(jsonObjectRequest);
+    }
+
+
+    public static void useVolleyImageRequest(String url, RequestQueue queue, final ImageView imageView){
+        ImageRequest imageRequest = new ImageRequest(url, new Response.Listener<Bitmap>() {
+            @Override
+            public void onResponse(Bitmap bitmap) {
+                imageView.setImageBitmap(bitmap);
+            }
+        }, 0, 0, Bitmap.Config.RGB_565,new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+            }
+        });
+        queue.add(imageRequest);
+    }
+
+    public static void useVolleyImageLoader(String url, RequestQueue queue, final ImageView imageView){
+        ImageLoader imageLoader = new ImageLoader(queue, new ImageLoader.ImageCache() {
+            @Override
+            public Bitmap getBitmap(String url) {
+                return null;
+            }
+
+            @Override
+            public void putBitmap(String url, Bitmap bitmap) {
+
+            }
+        });
+
+        ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(imageView,R.drawable.saierda,R.drawable.saierda);
+        imageLoader.get(url,imageListener);
+    }
+
+    public static void useVolleyNetWorkImageView(String url, RequestQueue queue, final NetworkImageView networkImageView){
+        ImageLoader imageLoader = new ImageLoader(queue, new ImageLoader.ImageCache() {
+            @Override
+            public Bitmap getBitmap(String url) {
+                return null;
+            }
+
+            @Override
+            public void putBitmap(String url, Bitmap bitmap) {
+
+            }
+        });
+        networkImageView.setDefaultImageResId(R.drawable.saierda);
+        networkImageView.setErrorImageResId(R.drawable.saierda);
+        networkImageView.setImageUrl(url,imageLoader);
     }
 }
