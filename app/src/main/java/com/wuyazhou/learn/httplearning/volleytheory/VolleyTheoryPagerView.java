@@ -64,7 +64,9 @@ public class VolleyTheoryPagerView extends FrameLayout implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.start_thread:
-                mThread.start();
+                if (!mThread.isAlive()){
+                    mThread.start();
+                }
                 break;
             case R.id.add_item:
                 mPriorityBlockingQueue.add("123");
