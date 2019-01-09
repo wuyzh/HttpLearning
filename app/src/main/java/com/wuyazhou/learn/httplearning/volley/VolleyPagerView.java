@@ -20,7 +20,7 @@ import com.wuyazhou.learn.httplearning.R;
  * @date 2018.7.7
  * @function
  */
-public class PagerViewVolley extends FrameLayout implements View.OnClickListener {
+public class VolleyPagerView extends FrameLayout implements View.OnClickListener {
     private Context mContext = null;
     private LinearLayout mLayout;
 
@@ -30,21 +30,21 @@ public class PagerViewVolley extends FrameLayout implements View.OnClickListener
     private NetworkImageView mNetworkImageView;
     private ImageView mImageView;
 
-    public PagerViewVolley(Context context) {
+    public VolleyPagerView(Context context) {
         super(context);
         mContext = context;
         initData();
         initView();
     }
 
-    public PagerViewVolley(Context context, AttributeSet attrs) {
+    public VolleyPagerView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
         initData();
         initView();
     }
 
-    public PagerViewVolley(Context context, AttributeSet attrs, int defStyleAttr) {
+    public VolleyPagerView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext = context;
         initData();
