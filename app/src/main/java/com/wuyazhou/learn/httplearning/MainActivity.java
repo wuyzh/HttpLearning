@@ -5,9 +5,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.wuyazhou.learn.httplearning.ViewPager.PagerOneView;
-import com.wuyazhou.learn.httplearning.volley.VolleyPagerView;
+import com.wuyazhou.learn.httplearning.ViewPager.ModelPagerView;
 import com.wuyazhou.learn.httplearning.ViewPager.ViewPagerAdapter;
+import com.wuyazhou.learn.httplearning.volley.VolleyPagerView;
 import com.wuyazhou.learn.httplearning.volleytheory.VolleyTheoryPagerView;
 
 import java.util.ArrayList;
@@ -43,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = findViewById(R.id.view_pager);
         mViewPagerAdapter = new ViewPagerAdapter(mViews,mViewTitle, this);
         mViewPager.setAdapter(mViewPagerAdapter);
-        addViewPagerView("volley",new VolleyPagerView(this));
-        addViewPagerView("volley原理",new VolleyTheoryPagerView(this));
-        addViewPagerView("待使用",new PagerOneView(this));
+        addViewPagerView("Volley",new VolleyPagerView(this));
+        addViewPagerView("Volley部分原理测试",new VolleyTheoryPagerView(this));
+        addViewPagerView("待使用",new ModelPagerView(this));
         mViewPagerAdapter.notifyDataSetChanged();
     }
 
