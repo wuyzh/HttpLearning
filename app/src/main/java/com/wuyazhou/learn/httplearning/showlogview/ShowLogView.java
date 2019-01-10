@@ -9,10 +9,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
-import com.wuyazhou.learn.httplearning.R;
+import com.wuyazhou.learn.pagermodel.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,8 @@ public class ShowLogView extends RelativeLayout implements ShowLogViewContract{
     private ViewGroup mViewGroup;
 
     private ShowLogThread mShowLogThread;
+
+    private ImageView mImageView = null;
 
     private ListView mLogListView = null;
     private LogListViewAdapter mLogListViewAdapter = null;
@@ -61,19 +64,23 @@ public class ShowLogView extends RelativeLayout implements ShowLogViewContract{
         mLogListViewAdapter = new LogListViewAdapter(mContext,mList);
         mLogListView.setAdapter(mLogListViewAdapter);
 
-
         mShowLogThread = new ShowLogThread(ShowLogUtil.getLogQueue());
+
+        mImageView = mViewGroup.findViewById(R.id.clear_image_view);
+        mImageView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mList.clear();
+                mLogListViewAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
 
     @Override
     public void showLog(String key,String value) {
-        if (ShowLogUtil.CLEAN_LOG.equals(value)){
-            mList.clear();
-        }else {
-            mList.add(new LogModel(key,value));
-        }
-        mHandler.post(runnableUi);
+        mList.add(new LogModel(key,value));
+        mHandler.post(mRunnableUi);
         Log.d(key,value);
     }
 
@@ -106,7 +113,7 @@ public class ShowLogView extends RelativeLayout implements ShowLogViewContract{
         }
     }
 
-    Runnable runnableUi =new  Runnable(){
+    Runnable mRunnableUi =new  Runnable(){
         @Override
         public void run() {
             //更新界面

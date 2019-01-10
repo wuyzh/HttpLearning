@@ -14,10 +14,6 @@ public class ShowLogUtil {
         mPriorityBlockingQueue.add(string);
     }
 
-    public static void clean(){
-        mPriorityBlockingQueue.add(CLEAN_LOG);
-    }
-
     public static PriorityBlockingQueue getLogQueue(){
         if (mPriorityBlockingQueue == null){
             mPriorityBlockingQueue = new PriorityBlockingQueue<String>();
