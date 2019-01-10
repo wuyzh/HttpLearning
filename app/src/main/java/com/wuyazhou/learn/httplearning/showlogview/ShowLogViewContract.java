@@ -6,7 +6,8 @@ package com.wuyazhou.learn.httplearning.showlogview;
 public interface ShowLogViewContract {
     /**
      * 显示log
-     * @param string
+     * @param key
+     * @param value
      * */
-    void showLog(String string);
+    void showLog(String key, String value);
 }

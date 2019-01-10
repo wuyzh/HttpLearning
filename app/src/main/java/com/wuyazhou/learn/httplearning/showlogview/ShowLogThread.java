@@ -35,7 +35,7 @@ public class ShowLogThread extends Thread{
                     return;
                 }
                 String string = mBlockingQueue.take();
-                mShowLogViewContract.showLog(string);
+                mShowLogViewContract.showLog("wuyazhouHttp",string);
             } catch (InterruptedException e) {
                 if (mQuit) {
                     return;

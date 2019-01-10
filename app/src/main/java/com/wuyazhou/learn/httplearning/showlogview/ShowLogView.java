@@ -2,15 +2,20 @@ package com.wuyazhou.learn.httplearning.showlogview;
 
 import android.content.Context;
 import android.os.Build;
+import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.wuyazhou.learn.httplearning.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author wuyzh
@@ -21,6 +26,12 @@ public class ShowLogView extends RelativeLayout implements ShowLogViewContract{
     private ViewGroup mViewGroup;
 
     private ShowLogThread mShowLogThread;
+
+    private ListView mLogListView = null;
+    private LogListViewAdapter mLogListViewAdapter = null;
+    private List<LogModel> mList = new ArrayList<>();
+
+    private Handler mHandler = null;
     public ShowLogView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
@@ -41,17 +52,25 @@ public class ShowLogView extends RelativeLayout implements ShowLogViewContract{
     }
 
     private void initView() {
+        mHandler = new Handler();
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mViewGroup = (ViewGroup) inflater.inflate(R.layout.show_log_layout, null);
         addView(mViewGroup);
+
+        mLogListView = mViewGroup.findViewById(R.id.log_list_view);
+        mLogListViewAdapter = new LogListViewAdapter(mContext,mList);
+        mLogListView.setAdapter(mLogListViewAdapter);
+
 
         mShowLogThread = new ShowLogThread(ShowLogUtil.getLogQueue());
     }
 
 
     @Override
-    public void showLog(String string) {
-        Log.d("wuyazhouHttp",string);
+    public void showLog(String key,String value) {
+        mList.add(new LogModel(key,value));
+        mHandler.post(runnableUi);
+        Log.d(key,value);
     }
 
     @Override
@@ -73,4 +92,22 @@ public class ShowLogView extends RelativeLayout implements ShowLogViewContract{
         mShowLogThread.quit();
         ShowLogUtil.release();
     }
+
+    class LogModel{
+        public String key;
+        public String value;
+        public LogModel(String key,String value){
+            this.key = key;
+            this.value = value;
+        }
+    }
+
+    Runnable runnableUi =new  Runnable(){
+        @Override
+        public void run() {
+            //更新界面
+            mLogListViewAdapter.notifyDataSetChanged();
+        }
+
+    };
 }
