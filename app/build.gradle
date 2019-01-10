@@ -30,6 +30,10 @@ dependencies {
     implementation 'com.mcxiaoke.volley:library:1.0.19'
     /** 添加网络数据为Gson的数据*/
     implementation "com.google.code.gson:gson:2.8.0"
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 }
 
 android{
