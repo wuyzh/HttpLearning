@@ -68,7 +68,11 @@ public class ShowLogView extends RelativeLayout implements ShowLogViewContract{
 
     @Override
     public void showLog(String key,String value) {
-        mList.add(new LogModel(key,value));
+        if (ShowLogUtil.CLEAN_LOG.equals(value)){
+            mList.clear();
+        }else {
+            mList.add(new LogModel(key,value));
+        }
         mHandler.post(runnableUi);
         Log.d(key,value);
     }
