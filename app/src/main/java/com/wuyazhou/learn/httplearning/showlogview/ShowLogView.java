@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
-import com.wuyazhou.learn.pagermodel.R;
+import com.wuyazhou.learn.httplearning.R;
 
 /**
  * @author wuyzh

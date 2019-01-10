@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.wuyazhou.learn.httplearning.ViewPager.ModelPagerView;
 import com.wuyazhou.learn.httplearning.ViewPager.ViewPagerAdapter;
+import com.wuyazhou.learn.httplearning.showlogview.ShowLogView;
 import com.wuyazhou.learn.httplearning.volley.VolleyPagerView;
 import com.wuyazhou.learn.httplearning.volleytheory.VolleyTheoryPagerView;
 
@@ -32,11 +33,14 @@ public class MainActivity extends AppCompatActivity {
     private List<View> mViews = new ArrayList<View>();
     private List<String> mViewTitle = new ArrayList<String>();
     private ViewPagerAdapter mViewPagerAdapter = null;
+
+    private ShowLogView mShowLogView = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initPager();
+        initShowLogView();
     }
 
     private void initPager(){
@@ -52,5 +56,16 @@ public class MainActivity extends AppCompatActivity {
     private void addViewPagerView(String title, View view){
         mViewTitle.add(title);
         mViews.add(view);
+    }
+
+
+    private void initShowLogView(){
+        mShowLogView = findViewById(R.id.show_log_view);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mShowLogView.release();
     }
 }
