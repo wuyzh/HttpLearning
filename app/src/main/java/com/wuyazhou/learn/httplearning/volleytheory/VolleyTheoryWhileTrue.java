@@ -1,6 +1,6 @@
 package com.wuyazhou.learn.httplearning.volleytheory;
 
-import android.util.Log;
+import com.wuyazhou.learn.httplearning.showlogview.ShowLogUtil;
 
 import java.util.concurrent.BlockingQueue;
 
@@ -26,10 +26,10 @@ public class VolleyTheoryWhileTrue extends Thread{
         while (true){
             try {
                 String string = mBlockingQueue.take();
-                Log.d("wuyazhouHttp","string: "+string);
+                ShowLogUtil.addLog(string);
             } catch (InterruptedException e) {
                 if (mQuit) {
-                    Log.d("wuyazhouHttp","线程结束");
+                    ShowLogUtil.addLog("线程结束");
                     return;
                 }
                 continue;

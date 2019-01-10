@@ -1,7 +1,6 @@
 package com.wuyazhou.learn.httplearning.volley;
 
 import android.graphics.Bitmap;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +15,7 @@ import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 import com.wuyazhou.learn.httplearning.R;
+import com.wuyazhou.learn.httplearning.showlogview.ShowLogUtil;
 
 import org.json.JSONObject;
 
@@ -55,9 +55,9 @@ public class VolleyTest {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 if (volleyError!=null){
-                    Log.d("wuyazhouHttp",volleyError.getMessage()+"");
+                    ShowLogUtil.addLog(volleyError.getMessage().toString());
                 }else {
-                    Log.d("wuyazhouHttp","不知道啊");
+                    ShowLogUtil.addLog("不知道啊");
                 }
             }
 
