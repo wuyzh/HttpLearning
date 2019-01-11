@@ -7,9 +7,9 @@ import android.view.View;
 
 import com.wuyazhou.learn.httplearning.ViewPager.ModelPagerView;
 import com.wuyazhou.learn.httplearning.ViewPager.ViewPagerAdapter;
-import com.wuyazhou.learn.httplearning.showlogview.ShowLogView;
 import com.wuyazhou.learn.httplearning.volley.VolleyPagerView;
 import com.wuyazhou.learn.httplearning.volleytheory.VolleyTheoryPagerView;
+import com.wuyazhou.learn.logview.ShowLogView;
 
 import java.util.ArrayList;
 import java.util.List;

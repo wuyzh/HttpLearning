@@ -1,4 +1,4 @@
-package com.wuyazhou.learn.httplearning.showlogview;
+package com.wuyazhou.learn.logview;
 
 import java.util.concurrent.PriorityBlockingQueue;
 
@@ -8,15 +8,16 @@ import java.util.concurrent.PriorityBlockingQueue;
  * */
 public class ShowLogUtil {
     public static final String CLEAN_LOG = "clean_all_clean_all";
-    private static PriorityBlockingQueue<String> mPriorityBlockingQueue = null;
+    private static PriorityBlockingQueue<ShowLogView.LogModel> mPriorityBlockingQueue = null;
+    public static final String INTERVAL= ": ";
 
-    public static void addLog(String string){
-        mPriorityBlockingQueue.add(string);
+    public static void addLog(String key,String value){
+        mPriorityBlockingQueue.add(new ShowLogView.LogModel(key+INTERVAL,value));
     }
 
     public static PriorityBlockingQueue getLogQueue(){
         if (mPriorityBlockingQueue == null){
-            mPriorityBlockingQueue = new PriorityBlockingQueue<String>();
+            mPriorityBlockingQueue = new PriorityBlockingQueue<ShowLogView.LogModel>();
         }
         return mPriorityBlockingQueue;
     }

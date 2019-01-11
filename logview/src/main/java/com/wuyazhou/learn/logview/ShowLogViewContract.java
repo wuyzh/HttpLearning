@@ -1,4 +1,4 @@
-package com.wuyazhou.learn.httplearning.showlogview;
+package com.wuyazhou.learn.logview;
 /**
  * @author wuyzh
  * @fuction 显示log的回调

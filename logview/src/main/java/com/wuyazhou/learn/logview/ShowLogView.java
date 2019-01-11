@@ -1,19 +1,16 @@
-package com.wuyazhou.learn.httplearning.showlogview;
+package com.wuyazhou.learn.logview;
 
 import android.content.Context;
 import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-
-import com.wuyazhou.learn.pagermodel.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +32,7 @@ public class ShowLogView extends RelativeLayout implements ShowLogViewContract{
     private List<LogModel> mList = new ArrayList<>();
 
     private Handler mHandler = null;
+    private LogModel mLogModel = null;
     public ShowLogView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
@@ -70,8 +68,7 @@ public class ShowLogView extends RelativeLayout implements ShowLogViewContract{
         mImageView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                mList.clear();
-                mLogListViewAdapter.notifyDataSetChanged();
+                mLogListViewAdapter.clean();
             }
         });
     }
@@ -79,9 +76,8 @@ public class ShowLogView extends RelativeLayout implements ShowLogViewContract{
 
     @Override
     public void showLog(String key,String value) {
-        mList.add(new LogModel(key,value));
+        mLogModel = new LogModel(key,value);
         mHandler.post(mRunnableUi);
-        Log.d(key,value);
     }
 
     @Override
@@ -104,12 +100,17 @@ public class ShowLogView extends RelativeLayout implements ShowLogViewContract{
         ShowLogUtil.release();
     }
 
-    class LogModel{
+    static class LogModel implements Comparable{
         public String key;
         public String value;
         public LogModel(String key,String value){
             this.key = key;
             this.value = value;
+        }
+
+        @Override
+        public int compareTo(Object o) {
+            return 0;
         }
     }
 
@@ -117,8 +118,9 @@ public class ShowLogView extends RelativeLayout implements ShowLogViewContract{
         @Override
         public void run() {
             //更新界面
-            mLogListViewAdapter.notifyDataSetChanged();
+            mLogListViewAdapter.addNewLog(mLogModel);
         }
 
     };
+
 }

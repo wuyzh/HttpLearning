@@ -1,4 +1,4 @@
-package com.wuyazhou.learn.httplearning.showlogview;
+package com.wuyazhou.learn.logview;
 
 import java.util.concurrent.BlockingQueue;
 
@@ -7,11 +7,12 @@ import java.util.concurrent.BlockingQueue;
  * @function 测试while true为什么没有永远执行
  * */
 public class ShowLogThread extends Thread{
-    private final BlockingQueue<String> mBlockingQueue;
+    private final BlockingQueue<ShowLogView.LogModel> mBlockingQueue;
     private ShowLogViewContract mShowLogViewContract;
     private boolean mQuit = false;
 
-    public ShowLogThread(BlockingQueue<String> mBlockingQueue){
+
+    public ShowLogThread(BlockingQueue<ShowLogView.LogModel> mBlockingQueue){
         this.mBlockingQueue = mBlockingQueue;
     }
 
@@ -34,8 +35,8 @@ public class ShowLogThread extends Thread{
                 if (mShowLogViewContract == null){
                     return;
                 }
-                String string = mBlockingQueue.take();
-                mShowLogViewContract.showLog("wuyazhouHttp",string);
+                ShowLogView.LogModel logModel = mBlockingQueue.take();
+                mShowLogViewContract.showLog(logModel.key,logModel.value);
             } catch (InterruptedException e) {
                 if (mQuit) {
                     return;
