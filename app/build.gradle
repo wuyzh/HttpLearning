@@ -32,6 +32,12 @@ dependencies {
     /** 添加网络数据为Gson的数据*/
     implementation "com.google.code.gson:gson:2.8.0"
 
+    /** 添加网络框架OkHttp3*/
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+    /** 添加网络框架OkHttp3 的依赖io组件*/
+    implementation 'com.squareup.okio:okio:1.7.0'
+
+    /** 内存泄露检测工具*/
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
