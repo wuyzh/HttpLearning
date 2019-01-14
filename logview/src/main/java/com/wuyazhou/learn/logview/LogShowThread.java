@@ -6,17 +6,17 @@ import java.util.concurrent.BlockingQueue;
  * @author wuyazhou
  * @function 测试while true为什么没有永远执行
  * */
-public class ShowLogThread extends Thread{
-    private final BlockingQueue<ShowLogView.LogModel> mBlockingQueue;
-    private ShowLogViewContract mShowLogViewContract;
+public class LogShowThread extends Thread{
+    private final BlockingQueue<LogShowView.LogModel> mBlockingQueue;
+    private LogShowViewContract mShowLogViewContract;
     private boolean mQuit = false;
 
 
-    public ShowLogThread(BlockingQueue<ShowLogView.LogModel> mBlockingQueue){
+    public LogShowThread(BlockingQueue<LogShowView.LogModel> mBlockingQueue){
         this.mBlockingQueue = mBlockingQueue;
     }
 
-    public void start(ShowLogViewContract showLogViewContract){
+    public void start(LogShowViewContract showLogViewContract){
         super.start();
         this.mShowLogViewContract = showLogViewContract;
         mQuit = false;
@@ -35,7 +35,7 @@ public class ShowLogThread extends Thread{
                 if (mShowLogViewContract == null){
                     return;
                 }
-                ShowLogView.LogModel logModel = mBlockingQueue.take();
+                LogShowView.LogModel logModel = mBlockingQueue.take();
                 mShowLogViewContract.showLog(logModel.key,logModel.value);
             } catch (InterruptedException e) {
                 if (mQuit) {

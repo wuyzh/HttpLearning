@@ -17,14 +17,14 @@ import java.util.List;
  * */
 public class LogListViewAdapter extends BaseAdapter {
     private Context mContext;
-    private List<ShowLogView.LogModel> mList = null;
-    private List<ShowLogView.LogModel> mKeyList = null;
+    private List<LogShowView.LogModel> mList = null;
+    private List<LogShowView.LogModel> mKeyList = null;
 
     private String mKey = null;
-    public LogListViewAdapter(Context context,List<ShowLogView.LogModel> list){
+    public LogListViewAdapter(Context context,List<LogShowView.LogModel> list){
         mContext = context;
         mList = list;
-        mKeyList = new ArrayList<ShowLogView.LogModel>();
+        mKeyList = new ArrayList<LogShowView.LogModel>();
     }
     @Override
     public int getCount() {
@@ -53,7 +53,7 @@ public class LogListViewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         final ViewHolder holderView;
 
-        ShowLogView.LogModel entity = null;
+        LogShowView.LogModel entity = null;
         if (mKey == null){
             entity = mList.get(position);
         }else {
@@ -79,11 +79,11 @@ public class LogListViewAdapter extends BaseAdapter {
             public void onClick(View v) {
                 if (mKey == null){
                     String string = ((TextView)v).getText()+"";
-                    int num = string.indexOf(ShowLogUtil.INTERVAL);
+                    int num = string.indexOf(LogShowUtil.INTERVAL);
                     if (num == -1){
                         return;
                     }else {
-                        mKey = string.substring(0,num+ShowLogUtil.INTERVAL.length());
+                        mKey = string.substring(0,num+LogShowUtil.INTERVAL.length());
                     }
                 }else {
                     mKey = null;
@@ -101,7 +101,7 @@ public class LogListViewAdapter extends BaseAdapter {
         TextView textLogView;
     }
 
-    public void addNewLog(ShowLogView.LogModel logModel){
+    public void addNewLog(LogShowView.LogModel logModel){
         if (mKey != null && mKey.equals(logModel.key)){
             mKeyList.add(logModel);
         }
@@ -120,7 +120,7 @@ public class LogListViewAdapter extends BaseAdapter {
         if (mKey == null){
             mKeyList.clear();
         }else {
-            for (ShowLogView.LogModel logModel: mList){
+            for (LogShowView.LogModel logModel: mList){
                 if (logModel.key.equals(mKey)){
                     mKeyList.add(logModel);
                 }

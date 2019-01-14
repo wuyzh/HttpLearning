@@ -7,9 +7,10 @@ import android.view.View;
 
 import com.wuyazhou.learn.httplearning.ViewPager.ModelPagerView;
 import com.wuyazhou.learn.httplearning.ViewPager.ViewPagerAdapter;
+import com.wuyazhou.learn.httplearning.okhttp.OkHttpPagerView;
 import com.wuyazhou.learn.httplearning.volley.VolleyPagerView;
 import com.wuyazhou.learn.httplearning.volleytheory.VolleyTheoryPagerView;
-import com.wuyazhou.learn.logview.ShowLogView;
+import com.wuyazhou.learn.logview.LogShowView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private List<String> mViewTitle = new ArrayList<String>();
     private ViewPagerAdapter mViewPagerAdapter = null;
 
-    private ShowLogView mShowLogView = null;
+    private LogShowView mShowLogView = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setAdapter(mViewPagerAdapter);
         addViewPagerView("Volley",new VolleyPagerView(this));
         addViewPagerView("Volley部分原理测试",new VolleyTheoryPagerView(this));
+        addViewPagerView("OkHttp",new OkHttpPagerView(this));
         addViewPagerView("待使用",new ModelPagerView(this));
         mViewPagerAdapter.notifyDataSetChanged();
     }

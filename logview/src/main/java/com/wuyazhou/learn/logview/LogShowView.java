@@ -19,11 +19,11 @@ import java.util.List;
  * @author wuyzh
  * @fuction 展示自己定义的log信息
  * */
-public class ShowLogView extends RelativeLayout implements ShowLogViewContract{
+public class LogShowView extends RelativeLayout implements LogShowViewContract {
     private Context mContext = null;
     private ViewGroup mViewGroup;
 
-    private ShowLogThread mShowLogThread;
+    private LogShowThread mShowLogThread;
 
     private ImageView mImageView = null;
 
@@ -33,20 +33,20 @@ public class ShowLogView extends RelativeLayout implements ShowLogViewContract{
 
     private Handler mHandler = null;
     private LogModel mLogModel = null;
-    public ShowLogView(Context context, AttributeSet attrs) {
+    public LogShowView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
         initView();
     }
 
-    public ShowLogView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public LogShowView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext = context;
         initView();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public ShowLogView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public LogShowView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         mContext = context;
         initView();
@@ -62,7 +62,7 @@ public class ShowLogView extends RelativeLayout implements ShowLogViewContract{
         mLogListViewAdapter = new LogListViewAdapter(mContext,mList);
         mLogListView.setAdapter(mLogListViewAdapter);
 
-        mShowLogThread = new ShowLogThread(ShowLogUtil.getLogQueue());
+        mShowLogThread = new LogShowThread(LogShowUtil.getLogQueue());
 
         mImageView = mViewGroup.findViewById(R.id.clear_image_view);
         mImageView.setOnClickListener(new OnClickListener() {
@@ -97,7 +97,7 @@ public class ShowLogView extends RelativeLayout implements ShowLogViewContract{
 
     public void release(){
         mShowLogThread.quit();
-        ShowLogUtil.release();
+        LogShowUtil.release();
     }
 
     static class LogModel implements Comparable{

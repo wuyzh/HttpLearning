@@ -21,12 +21,12 @@
             android:textColor="#ff0000"
             android:textSize="18sp"/>
     </android.support.v4.view.ViewPager>
-    <com.wuyazhou.learn.logview.ShowLogView
+    <com.wuyazhou.learn.logview.LogShowView
         android:id="@+id/show_log_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true">
-    </com.wuyazhou.learn.logview.ShowLogView>
+    </com.wuyazhou.learn.logview.LogShowView>
 
 </RelativeLayout>
