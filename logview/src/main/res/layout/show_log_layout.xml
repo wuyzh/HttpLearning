@@ -18,10 +18,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/open"/>
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="201dp"
+                android:gravity="center"
+                android:text="日志展示"
+                android:textSize="20dp"
+                android:textColor="#FFFFFF"
+                android:background="#60B2D9"/>
         </LinearLayout>
         <!--设置抽屉内容-->
         <RelativeLayout
