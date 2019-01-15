@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String BAI_DU = "https://www.baidu.com";
     public static final String TAO_BAO = "http://api.k780.com:88/?app=phone.get&phone=13800138000&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json";
     public static final String TAO_BAO_HTTP = "http://api.k780.com:88";
+    public static final String UPLOAD_FILE_HTTP = "https://api.github.com/markdown/raw";
     /** public static final String TAO_BAO = "http://ip.taobao.com/service/getIpInfo.php?ip=59.108.54.37";*/
     public static final String IMAGE_URL_1 = "https://ss.csdn.net/p?https://mmbiz.qpic.cn/mmbiz_jpg/trm5VMeFp9mJejJH2asZZT0ML63erOW3QAMSkjEMsLwByykbJwsHj7QmPbQDDUU43BJpHTXxyiaY24LXlA6zKDQ/640?wx_fmt=jpeg";
     public static final String IMAGE_URL_2 = "http://imgup01.myra2.com/2017-04/13/11/1492055267740_0.jpg";
