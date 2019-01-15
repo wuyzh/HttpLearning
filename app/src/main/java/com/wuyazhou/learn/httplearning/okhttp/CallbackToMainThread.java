@@ -1,5 +1,7 @@
 package com.wuyazhou.learn.httplearning.okhttp;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Looper;
 
 import java.io.IOException;
@@ -16,7 +18,8 @@ public class CallbackToMainThread implements Callback {
     private Callback mCallback = null;
     private Call mCall = null;
     private IOException mIOException = null;
-    private String mResponse = null;
+    private String mStringResponse = null;
+    private Bitmap mBitmapResponse = null;
     public CallbackToMainThread(Callback callback){
         mCallback = callback;
     }
@@ -31,7 +34,15 @@ public class CallbackToMainThread implements Callback {
     public void onResponse(Call call, Response response) {
         mCall = call;
         try {
-            mResponse = response.body().string();
+            if (mCallback.getTClassName().equals(String.class.getName())){
+                mStringResponse = response.body().string();
+            }else if (mCallback.getTClassName().equals(Bitmap.class.getName())){
+                byte[] data = response.body().bytes();
+                BitmapFactory.Options decodeOptions = new BitmapFactory.Options();
+
+                decodeOptions.inPreferredConfig = Bitmap.Config.RGB_565;
+                mBitmapResponse = BitmapFactory.decodeByteArray(data, 0, data.length, decodeOptions);
+            }
         } catch (IOException e) {
             mIOException = e;
             new android.os.Handler(Looper.getMainLooper()).post(runnableFailureUI);
@@ -49,15 +60,21 @@ public class CallbackToMainThread implements Callback {
         @Override
         public void run() {
             try {
-                mCallback.onResponse(mCall,mResponse);
+                if (mStringResponse != null){
+                    mCallback.onResponse(mCall,mStringResponse);
+                }else if (mBitmapResponse != null){
+                    mCallback.onResponse(mCall,mBitmapResponse);
+                }
+
             } catch (IOException e) {
                 mCallback.onFailure(mCall,e);
             }
         }
     };
 
-    public interface Callback {
+    public interface Callback<T> {
         void onFailure(Call call, IOException e);
-        void onResponse(Call call, String response) throws IOException;
+        void onResponse(Call call, T response) throws IOException;
+        String getTClassName();
     }
 }
