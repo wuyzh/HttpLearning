@@ -10,7 +10,7 @@ public class JsonModel {
     public int success;
     public Result result;
     
-    class Result{
+    public class Result{
         public String status;
         public String phone;
         public String area;
