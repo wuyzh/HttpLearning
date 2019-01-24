@@ -26,9 +26,10 @@ import okhttp3.RequestBody;
 public class OkHttpTest {
 
     public static void getRequest(OkHttpClient okHttpClient, String url,final TextView textView){
-        Request.Builder requestBuilder = new Request.Builder().url(url);
-        requestBuilder.method("GET",null);
-        final Request request = requestBuilder.build();
+        Request.Builder requestBuilder = new Request.Builder().
+                url(url).
+                method("GET",null);
+        Request request = requestBuilder.build();
 
         Call call = okHttpClient.newCall(request);
         call.enqueue(new CallbackToMainThread(new CallbackToMainThread.Callback<String>() {
