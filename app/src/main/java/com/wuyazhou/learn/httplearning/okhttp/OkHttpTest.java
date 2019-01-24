@@ -181,7 +181,5 @@ public class OkHttpTest {
                 return String.class.getName();
             }
         }));
-
-
     }
 }
