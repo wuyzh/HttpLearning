@@ -5,8 +5,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.wuyazhou.learn.httplearning.ViewPager.ModelPagerView;
-import com.wuyazhou.learn.httplearning.ViewPager.ViewPagerAdapter;
+import com.wuyazhou.handler.viewpager.ModelPagerView;
+import com.wuyazhou.handler.viewpager.ViewPagerAdapter;
 import com.wuyazhou.learn.httplearning.okhttp.OkHttpPagerView;
 import com.wuyazhou.learn.httplearning.volley.VolleyPagerView;
 import com.wuyazhou.learn.httplearning.volleytheory.VolleyTheoryPagerView;

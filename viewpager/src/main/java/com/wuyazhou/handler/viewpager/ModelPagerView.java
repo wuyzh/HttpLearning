@@ -1,4 +1,4 @@
-package com.wuyazhou.learn.httplearning.ViewPager;
+package com.wuyazhou.handler.viewpager;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-
-import com.wuyazhou.learn.httplearning.R;
 
 /**
  * @author 吴亚洲
@@ -49,12 +47,10 @@ public class ModelPagerView extends FrameLayout implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.model_button:
-                Toast.makeText(mContext,"点击按钮",Toast.LENGTH_LONG).show();
-                break;
-            default:
-                break;
+        int i = v.getId();
+        if (i == R.id.model_button) {
+            Toast.makeText(mContext, "点击按钮", Toast.LENGTH_LONG).show();
+        } else {
         }
     }
 }
